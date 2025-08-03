@@ -3,4 +3,11 @@ name = "depores"
 version = "0.1.0"
 description = "Add your description here"
 requires-python = ">=3.13"
-dependencies = []
+dependencies = [
+    "fastapi[standard]>=0.116.1",
+    "pydantic-settings>=2.10.1",
+    "requests>=2.32.4",
+    "ruff>=0.12.7",
+    "sqlalchemy>=2.0.42",
+    "uvicorn[standard]>=0.35.0",
+]

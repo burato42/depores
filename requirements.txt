@@ -1,0 +1,9 @@
+# I normally use uv during the develpment but in this case requiremnts.txt is used for docker
+# I don't know how to properly set uv with docker :)
+
+fastapi[standard]==0.116.1
+pydantic-settings==2.10.1
+requests==2.32.4
+ruff==0.12.7
+sqlalchemy==2.0.42
+uvicorn[standard]==0.35.0
