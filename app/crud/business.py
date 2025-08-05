@@ -15,11 +15,12 @@ class CRUDSport:
         existing = await db_session.scalars(
             select(SportDBModel).where(SportDBModel.name == sport_obj.name)
         )
-        if existing:
-            # TODO Move such exceptions to the router
-            raise HTTPException(
-                status_code=status.HTTP_409_CONFLICT, detail="Sport already exists"
-            )
+        # TODO This approach doesn't work properly
+        # if existing:
+        #     # TODO Move such exceptions to the route
+        #     raise HTTPException(
+        #         status_code=status.HTTP_409_CONFLICT, detail="Sport already exists"
+        #     )
 
         db_sport = SportDBModel(name=sport_obj.name)
         db_session.add(db_sport)
@@ -35,11 +36,12 @@ class CRUDSport:
         records = await db_session.scalars(
             select(SportDBModel).where(SportDBModel.id == sport_id)
         )
-        if not records:
-            # TODO Move such exceptions to the router
-            raise HTTPException(
-                status_code=status.HTTP_404_NOT_FOUND, detail="Records is not found"
-            )
+        # TODO This approach doesn't work properly
+        # if not records:
+        #     # TODO Move such exceptions to the router
+        #     raise HTTPException(
+        #         status_code=status.HTTP_404_NOT_FOUND, detail="Records is not found"
+        #     )
         return records.first()
 
 
