@@ -1,33 +1,42 @@
 from pydantic import BaseModel
 
 
-class SportBase(BaseModel):
-    sport_name: str
-
-
-class Sport(SportBase):
-    sport_id: int
-
+class MixConfig:
     class Config:
         from_attributes = True
 
 
-class League(BaseModel):
-    league_id: int
-    league_name: str
+class SportCreate(BaseModel):
+    name: str
+
+
+class Sport(SportCreate, MixConfig):
+    id: int
+
+
+class LeagueCreate(BaseModel):
+    name: str
     sport_id: int
 
 
-class Teams(BaseModel):
-    team_id: int
-    team_name: int
+class League(LeagueCreate, MixConfig):
+    id: int
+
+
+class TeamCreate(BaseModel):
+    name: str
     league_id: int
 
 
-class Player(BaseModel):
-    player_id: int
-    player_name: str
-    player_position: str | None
+class Team(TeamCreate, MixConfig):
+    id: int
+
+
+class PlayerCreate(BaseModel):
+    name: str
+    position: str | None
     team_id: int | None
 
 
+class Player(PlayerCreate, MixConfig):
+    id: int

@@ -1,6 +1,6 @@
-'''
+"""
 Taken from https://github.com/ThomasAitken/demo-fastapi-async-sqlalchemy/blob/main/backend/app/database.py
-'''
+"""
 
 import contextlib
 from typing import Any, AsyncIterator
@@ -24,7 +24,9 @@ class Base(DeclarativeBase):
 class DatabaseSessionManager:
     def __init__(self, host: str, engine_kwargs: dict[str, Any] = {}):
         self._engine = create_async_engine(host, **engine_kwargs)
-        self._sessionmaker = async_sessionmaker(autocommit=False, bind=self._engine, expire_on_commit=False)
+        self._sessionmaker = async_sessionmaker(
+            autocommit=False, bind=self._engine, expire_on_commit=False
+        )
 
     async def close(self):
         if self._engine is None:
@@ -61,7 +63,9 @@ class DatabaseSessionManager:
             await session.close()
 
 
-sessionmanager = DatabaseSessionManager(settings.database_url, {"echo": settings.echo_sql})
+sessionmanager = DatabaseSessionManager(
+    settings.database_url, {"echo": settings.echo_sql}
+)
 
 
 async def get_db_session():
