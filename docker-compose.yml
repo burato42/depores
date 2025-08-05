@@ -17,7 +17,7 @@ services:
   backend:
     build:
       dockerfile: Dockerfile
-    command: python app/main.py
+    command: bash -c "alembic upgrade head && python app/main.py"
     tty: true
     volumes:
       - ./app:/app/:cached
