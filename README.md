@@ -10,6 +10,7 @@ This is currently a work in progress, with the main focus on building the core f
   * **Persistent Storage**: Uses **PostgreSQL** for reliable data storage.
   * **Docker-based Setup**: Easy to run and get started with `docker compose`.
   * **Database Migrations**: Manages database schema changes with `alembic`.
+  * **Style checks and code formatting**: `ruff` is used for this purposes
 
 ## Getting Started
 
