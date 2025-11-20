@@ -9,5 +9,9 @@ class Settings(BaseSettings):
     oauth_token_secret: str = "my_dev_secret"
     log_level: str = "DEBUG"
 
+    class Config:
+        env_file = ".env"
+        extra = "ignore"
+
 
 settings = Settings()  # type: ignore
